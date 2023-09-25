@@ -1,3 +1,94 @@
+html {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 550px;
+}
+
+h1, h2, p {
+    margin: 0;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+a:link, a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    background: black;
+    color: white;
+    padding: 0 25px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 205px;
+    left: 175px;
+}
+form > button {
+    background: #ccc;
+    padding: 2px 10px;
+}
+
+.container {
+    padding: 17px 34px;
+}
+
+#title-nav-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 208px;
+}
+
+#movie-div {
+    width: 462px;
+    display: flex;
+    margin: 34px 0;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 34px;
+}
+
+#poster-div {
+
+}
+
+#poster {
+    width: 99px;
+}
+
+#text-div {
+    padding: 11px 0 21px 21px;
+}
+
+#title-div {
+    display: flex;
+}
+
+#details-div {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+#circle-button {
+    background: black;
+    color: white;
+    border-radius: 50%;
+    display: inline-block;
+    width: 15px;
+    font-weight: bolder;
+    padding-left: 1px;
 }

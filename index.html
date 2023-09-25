@@ -11,20 +11,26 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <header>
-    <h1>Find your film</h1>
-    <p><a href="watchlist.html">My Watchlist</a></p>
-    <form action="post">
-      <input
-        type="text"
-        name="movie-search"
-        id="movie-search"
-        placeholder="Search for a movie"
-      />
-      <button>Search</button>
-    </form>
+    <div id="title-nav-div">
+      <h1>Find your film</h1>
+      <p><a href="watchlist.html">My Watchlist</a></p>
+    </div>
+    <div>
+      <form action="post">
+        <input
+          type="text"
+          name="movie-search"
+          id="movie-search"
+          placeholder="Search for a movie"
+        />
+        <button>Search</button>
+      </form>
+    </div>
   </header>
   <body>
-    <div id="movie-result"></div>
+    <div class="container">
+      <div id="movie-result"></div>
+    </div>
   </body>
   <script src="app.js"></script>
 </html>
