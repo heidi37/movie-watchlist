@@ -1,6 +1,13 @@
 const movieResultDiv = document.getElementById("movie-result")
 const searchForm = document.getElementById("search-form")
-const searchValue = document.getElementById("movie-search");
+const searchValue = document.getElementById("movie-search")
+
+function addIdToLocalStorage(newId){
+    let ids = JSON.parse(localStorage.getItem('ids')) || []
+    ids.push(newId)
+    localStorage.setItem('ids', JSON.stringify(ids))
+    console.log(ids)
+}
 
 searchForm.addEventListener("submit", function(event){
     movieResultDiv.innerHTML = ``
@@ -26,7 +33,7 @@ searchForm.addEventListener("submit", function(event){
                     <div id="details-div">
                         <p>${data.Runtime}</p>
                         <p>${data.Genre}</p>
-                        <button><span id="circle-button">+</span> Watchlist</button>
+                        <button class="watchlist-button" id=${data.imdbID}><span id="circle-button">+</span> Watchlist</button>
                     </div>
                     <div id="plot-div">
                         <p>${data.Plot}</p>
@@ -35,6 +42,13 @@ searchForm.addEventListener("submit", function(event){
                 <div>
             </div>
             `
+            const watchListButtonCollection = document.querySelectorAll("#circle-button")
+            for (const button of watchListButtonCollection){
+                button.addEventListener("click", function(e){
+                    addIdToLocalStorage(e.target.parentNode.id)
+                })
+            }
+
                 })
             }
         }
