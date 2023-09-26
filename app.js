@@ -3,13 +3,17 @@ const searchForm = document.getElementById("search-form")
 const searchValue = document.getElementById("movie-search");
 
 searchForm.addEventListener("submit", function(event){
-    event.preventDefault();
-    console.log(searchValue.value)
-    fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=80d36601&t=${searchValue.value}`)
+    movieResultDiv.innerHTML = ``
+    event.preventDefault()
+    fetch(`http://www.omdbapi.com/?s=${searchValue.value}&apikey=80d36601`)
         .then(response => response.json())
         .then(function (data) {
-            console.log(data)
-            movieResultDiv.innerHTML += `
+            const limitedResults = data.Search.slice(0, 10)
+            for (title in limitedResults){
+                fetch(`http://www.omdbapi.com/?i=${data.Search[title].imdbID}&apikey=80d36601`)
+                .then(response => response.json())
+                .then(function (data) {
+                movieResultDiv.innerHTML += `
             <div id="movie-div">
                 <div id="poster-div">
                     <img src="${data.Poster}" id="poster" />
@@ -31,6 +35,8 @@ searchForm.addEventListener("submit", function(event){
                 <div>
             </div>
             `
+                })
+            }
         }
         )
 })
