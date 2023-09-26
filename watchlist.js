@@ -33,7 +33,10 @@ document.addEventListener("DOMContentLoaded", function(){
         const watchListButtonCollection = document.querySelectorAll("#circle-button")
         for (const button of watchListButtonCollection){
             button.addEventListener("click", function(e){
-                addIdToLocalStorage(e.target.parentNode.id)
+                ids.splice((ids.indexOf(e.target.parentNode.id)),1);
+                localStorage.setItem('ids', JSON.stringify(ids))
+                console.log(localStorage)
+                window.location.reload()
             })
         }
 
