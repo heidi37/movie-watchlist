@@ -6,21 +6,20 @@ function addIdToLocalStorage(newId){
     let ids = JSON.parse(localStorage.getItem('ids')) || []
     ids.push(newId)
     localStorage.setItem('ids', JSON.stringify(ids))
-    console.log(ids)
 }
 
 searchForm.addEventListener("submit", function(event){
     movieResultDiv.innerHTML = ``
     event.preventDefault()
     fetch(`http://www.omdbapi.com/?s=${searchValue.value}&apikey=80d36601`)
-        .then(response => response.json())
-        .then(function (data) {
-            const limitedResults = data.Search.slice(0, 10)
-            for (title in limitedResults){
-                fetch(`http://www.omdbapi.com/?i=${data.Search[title].imdbID}&apikey=80d36601`)
-                .then(response => response.json())
-                .then(function (data) {
-                movieResultDiv.innerHTML += `
+    .then(response => response.json())
+    .then(function (data) {
+        const limitedResults = data.Search.slice(0, 10)
+        for (title in limitedResults){
+            fetch(`http://www.omdbapi.com/?i=${data.Search[title].imdbID}&apikey=80d36601`)
+            .then(response => response.json())
+            .then(function (data) {
+            movieResultDiv.innerHTML += `
             <div id="movie-div">
                 <div id="poster-div">
                     <img src="${data.Poster}" id="poster" />
@@ -33,7 +32,7 @@ searchForm.addEventListener("submit", function(event){
                     <div id="details-div">
                         <p>${data.Runtime}</p>
                         <p>${data.Genre}</p>
-                        <button class="watchlist-button" id=${data.imdbID}><span id="circle-button">+</span> Watchlist</button>
+                        <button class="watchlist-button" id=${data.imdbID}><span id=${data.imdbID} class="circle-button add">+</span> Watchlist</button>
                     </div>
                     <div id="plot-div">
                         <p>${data.Plot}</p>
@@ -42,15 +41,18 @@ searchForm.addEventListener("submit", function(event){
                 <div>
             </div>
             `
-            const watchListButtonCollection = document.querySelectorAll("#circle-button")
+        const watchListButtonCollection = document.querySelectorAll(".watchlist-button")
             for (const button of watchListButtonCollection){
                 button.addEventListener("click", function(e){
-                    addIdToLocalStorage(e.target.parentNode.id)
+                    let ids = JSON.parse(localStorage.getItem('ids')) || []
+                    if (!ids.includes(e.target.id)){
+                    ids.unshift(e.target.id)
+                    localStorage.setItem('ids', JSON.stringify(ids))
+                    window.location.href = 'watchlist.html'
+                    }
                 })
             }
-
-                })
-            }
+            })
         }
-        )
+    })
 })

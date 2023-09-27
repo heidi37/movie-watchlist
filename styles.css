@@ -3,12 +3,24 @@ html {
 }
 
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     width: 550px;
+    margin: 0 auto;
+    background: black;
 }
 
 h1, h2, p {
     margin: 0;
+}
+
+h1 {
+    text-align: justify;
+    font-family: Inter;
+    font-size: 42.795px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 23.775px; /* 55.556% */
+    letter-spacing: -1.926px;
 }
 
 button {
@@ -19,14 +31,37 @@ button {
 a:link, a:visited {
     color: white;
     text-decoration: none;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
 }
 
 header {
+    position: relative;
     display: flex;
     flex-direction: column;
-    background: black;
+    background-image: url('images/header-background.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center 24%;
     color: white;
     padding: 0 25px;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    z-index: 1;
+}
+
+#film-icon {
+    width: 70px;
 }
 
 form {
@@ -34,16 +69,47 @@ form {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 205px;
-    left: 175px;
+    top: 200px;
+    z-index: 3;
 }
+#movie-search {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    color: #6B7280;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px 0px 0px 6px;
+    display: flex;
+    padding: 9px 0 9px 50px;
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+    width: 328px;
+    position: relative;
+    background-image: url('images/search.svg');
+    background-repeat: no-repeat;
+    background-size: 7%;
+    background-position: 10px;
+}
+
 form > button {
-    background: #ccc;
-    padding: 2px 10px;
+    border-radius: 0px 6px 6px 0px;
+    border: 1px solid #D1D5DB;
+    background:#F9FAFB;
+    display: flex;
+    width: 120px;
+    padding: 9px 11px 9px 17px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    align-self: stretch;
 }
 
 .container {
     padding: 17px 34px;
+    background-color: white;
 }
 
 #title-nav-div {
@@ -51,6 +117,25 @@ form > button {
     justify-content: space-between;
     align-items: center;
     height: 208px;
+    z-index: 2;
+}
+
+#no-results {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 625px;
+    margin-top: -75px;
+}
+
+#no-results p {
+    color: #DFDDDD;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+    margin-top: 8.75px;
 }
 
 #movie-div {
@@ -59,10 +144,6 @@ form > button {
     margin: 34px 0;
     border-bottom: 1px solid #cccccc;
     padding-bottom: 34px;
-}
-
-#poster-div {
-
 }
 
 #poster {
@@ -83,11 +164,23 @@ form > button {
     margin: 10px 0;
 }
 
-#circle-button {
+.circle-button {
     background: black;
     color: white;
     border-radius: 50%;
-    display: inline-block;
-    width: 15px;
-    font-weight: bolder;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    margin-right: 3px;
+    font-size: 1.25rem;
+}
+
+.add:hover {
+    background-color: green;
+}
+
+.remove:hover {
+    background-color: red;
 }
