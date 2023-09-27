@@ -27,7 +27,7 @@ searchForm.addEventListener("submit", function(event){
                 <div id="text-div">
                     <div id="title-div">
                         <h2>${data.Title}</h2>
-                        <p>⭐️ ${data.imdbRating}</p>
+                        <p><img src="images/star.svg" alt="star icon" id="star-icon"> ${data.imdbRating}</p>
                     </div>
                     <div id="details-div">
                         <p>${data.Runtime}</p>

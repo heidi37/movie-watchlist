@@ -23,6 +23,29 @@ h1 {
     letter-spacing: -1.926px;
 }
 
+h2 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+p, .watchlist-button {
+    font-size: 12px;
+    color: #111827;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#plot-div p {
+    font-size: 14px;
+    color: #6B7280;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+
+}
+
 button {
     border: none;
     background: none;
@@ -62,6 +85,10 @@ header::before {
 
 #film-icon {
     width: 70px;
+}
+
+#star-icon {
+    margin-left: 10px;
 }
 
 form {
@@ -141,9 +168,9 @@ form > button {
 #movie-div {
     width: 462px;
     display: flex;
-    margin: 34px 0;
+    margin: 25px 0;
     border-bottom: 1px solid #cccccc;
-    padding-bottom: 34px;
+    padding-bottom: 21px;
 }
 
 #poster {
@@ -151,11 +178,13 @@ form > button {
 }
 
 #text-div {
-    padding: 11px 0 21px 21px;
+    padding: 11px 0 0 21px;
 }
 
 #title-div {
     display: flex;
+    align-items: center;
+
 }
 
 #details-div {
@@ -171,10 +200,9 @@ form > button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 24px;
-    height: 24px;
+    width: 15px;
+    height: 15px;
     margin-right: 3px;
-    font-size: 1.25rem;
 }
 
 .add:hover {
