@@ -5,7 +5,7 @@ const searchValue = document.getElementById("movie-search")
 searchForm.addEventListener("submit", function(event){
     movieResultDiv.innerHTML = ``
     event.preventDefault()
-    fetch(`http://www.omdbapi.com/?s=${searchValue.value}&apikey=80d36601`)
+    fetch(`https://www.omdbapi.com/?s=${searchValue.value}&apikey=80d36601`)
     .then(response => response.json())
     .then(function (data) {
         console.log(data)
@@ -18,7 +18,7 @@ searchForm.addEventListener("submit", function(event){
         } else {
         const limitedResults = data.Search.slice(0, 10)
         for (let title in limitedResults){
-            fetch(`http://www.omdbapi.com/?i=${data.Search[title].imdbID}&apikey=80d36601`)
+            fetch(`https://www.omdbapi.com/?i=${data.Search[title].imdbID}&apikey=80d36601`)
             .then(response => response.json())
             .then(function (data) {
 

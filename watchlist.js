@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let ids = JSON.parse(localStorage.getItem('ids'))
     if (ids.length > 0) {
     for (let id in ids){
-        fetch(`http://www.omdbapi.com/?i=${ids[id]}&apikey=80d36601`)
+        fetch(`https://www.omdbapi.com/?i=${ids[id]}&apikey=80d36601`)
         .then(response => response.json())
         .then(function (data) {
         movieWatchListDiv.innerHTML += `
