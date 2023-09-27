@@ -2,12 +2,6 @@ const movieResultDiv = document.getElementById("movie-result")
 const searchForm = document.getElementById("search-form")
 const searchValue = document.getElementById("movie-search")
 
-function addIdToLocalStorage(newId){
-    let ids = JSON.parse(localStorage.getItem('ids')) || []
-    ids.push(newId)
-    localStorage.setItem('ids', JSON.stringify(ids))
-}
-
 searchForm.addEventListener("submit", function(event){
     movieResultDiv.innerHTML = ``
     event.preventDefault()
@@ -23,7 +17,7 @@ searchForm.addEventListener("submit", function(event){
             `
         } else {
         const limitedResults = data.Search.slice(0, 10)
-        for (title in limitedResults){
+        for (let title in limitedResults){
             fetch(`http://www.omdbapi.com/?i=${data.Search[title].imdbID}&apikey=80d36601`)
             .then(response => response.json())
             .then(function (data) {
