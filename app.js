@@ -14,11 +14,20 @@ searchForm.addEventListener("submit", function(event){
     fetch(`http://www.omdbapi.com/?s=${searchValue.value}&apikey=80d36601`)
     .then(response => response.json())
     .then(function (data) {
+        console.log(data)
+        if (data.Response === 'False'){
+            movieResultDiv.innerHTML += `
+            <div id="no-results">
+            <p>Unable to find what you’re looking for. Please try another search.</p>
+            </div>
+            `
+        } else {
         const limitedResults = data.Search.slice(0, 10)
         for (title in limitedResults){
             fetch(`http://www.omdbapi.com/?i=${data.Search[title].imdbID}&apikey=80d36601`)
             .then(response => response.json())
             .then(function (data) {
+
             movieResultDiv.innerHTML += `
             <div id="movie-div">
                 <div id="poster-div">
@@ -53,6 +62,8 @@ searchForm.addEventListener("submit", function(event){
                 })
             }
             })
+
         }
+    }
     })
 })

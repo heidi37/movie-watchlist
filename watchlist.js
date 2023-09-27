@@ -3,6 +3,7 @@ const movieWatchListDiv = document.getElementById("movie-watch-list")
 document.addEventListener("DOMContentLoaded", function(){
     movieWatchListDiv.innerHTML = ``
     let ids = JSON.parse(localStorage.getItem('ids'))
+    if (ids.length > 0) {
     for (let id in ids){
         fetch(`http://www.omdbapi.com/?i=${ids[id]}&apikey=80d36601`)
         .then(response => response.json())
@@ -40,4 +41,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
         })
     }
+} else {
+    movieWatchListDiv.innerHTML += `
+    <div id="no-watchlist">
+      <p>Your watchlist is looking a little empty...</p>
+      <p class="add-movies"><a href="index.html"><span class="circle-button remove">+</span> Let's add some movies</a></p>
+    </div>
+    `
+}
 })

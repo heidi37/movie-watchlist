@@ -147,7 +147,7 @@ form > button {
     z-index: 2;
 }
 
-#no-results {
+#no-results, #no-watchlist {
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -157,12 +157,22 @@ form > button {
     margin-top: -75px;
 }
 
-#no-results p {
+#no-results p, #no-watchlist p {
     color: #DFDDDD;
     font-size: 18px;
     font-weight: 700;
     line-height: 20px;
     margin-top: 8.75px;
+    text-align: center;
+    padding: 0 55px;
+}
+
+#no-watchlist p.add-movies, #no-watchlist a {
+    color: #363636;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;
 }
 
 #movie-div {
